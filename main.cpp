@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <windows.h>
 
 using namespace std;
 
@@ -67,7 +68,11 @@ void questions::askQuestion()
 
 
 int main()
-{
+{      
+    //adding a textcolor
+     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED |
+                                                                 FOREGROUND_GREEN |
+                                                                 FOREGROUND_INTENSITY );
     string name;
     string response;
 
