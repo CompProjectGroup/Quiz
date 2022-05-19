@@ -1,3 +1,4 @@
+#include <bits\stdc++.h>
 #include <iostream>
 #include <string>
 #include <windows.h>
@@ -73,6 +74,10 @@ int main()
      SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED |
                                                                  FOREGROUND_GREEN |
                                                                  FOREGROUND_INTENSITY );
+    //Displaying a time  and date 
+    time_t now =time(0);
+    char *dt=ctime(&now);
+    cout<<"\nLocal Date and Time:" << dt << endl;
     string name;
     string response;
 
