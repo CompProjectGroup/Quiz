@@ -1,7 +1,5 @@
-#include <bits\stdc++.h>
 #include <iostream>
 #include <string>
-#include <windows.h>
 
 using namespace std;
 
@@ -9,97 +7,85 @@ int answer;
 int totalScore;
 int nextLevel;
 
-class questions
-{
+//5 possible answers, correct answer and question score.
+class Question{
+public:
+    void setValues(string,string,string,string,string,string,int int);
+    void askQuestion();
+
+private:
     string questionText;
-    string Answer_1;
-    string Answer_2;
-    string Answer_3;
-    string Answer_4;
-    string Answer_5;
+    string answer_1;
+    string answer_2;
+    string answer_3;
+    string answer_4;
+    string answer_5;
 
     int correctSolution;
     int questionScore;
-
-public:
-    void setValues(string,string,string,string,string,string,int,int);
-    void askQuestion();
 };
 
-void questions::setValues(string Q,string ans1,string ans2,string ans3,string ans4,string ans5,int ca,int QS)
-{
-    questionText=Q;
-    Answer_1=ans1;
-    Answer_2=ans2;
-    Answer_3=ans3;
-    Answer_4=ans4;
-    Answer_5=ans5;
-    correctSolution=ca;
-    questionScore=QS;
-
-}
-void questions::askQuestion()
-{
-    cout<<endl;
-    cout<<questionText<<"\n"<<endl;
-    cout<<endl;
-    cout<<"1.  "<<Answer_1<<endl;
-    cout<<"2.  "<<Answer_2<<endl;
-    cout<<"3.  "<<Answer_3<<endl;
-    cout<<"4.  "<<Answer_4<<endl;
-    cout<<"5.  "<<Answer_5<<endl;
-    cout<<endl;
-
-
-    cout<<"Choose the correct answer: "<<endl;
-    cin>>answer;
-    if(answer==correctSolution)
-    {
-        totalScore= totalScore+questionScore;
-        nextLevel=totalScore;
-        cout<<"Great,you are correct!"<<endl;
-        cout<<"Score: "<< questionScore<<" out of "<<questionScore<<endl;
-        cout<<endl;
-    }else
-    {
-        cout<<"Score: 0"<<" out of "<<questionScore<<endl;
-        cout<<"The correct solution is "<<correctSolution<<endl;
-    }
-}
-
-
 int main()
-{      
-    //adding a textcolor
-     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED |
-                                                                 FOREGROUND_GREEN |
-                                                                 FOREGROUND_INTENSITY );
-    //Displaying a time  and date 
-    time_t now =time(0);
-    char *dt=ctime(&now);
-    cout<<"\nLocal Date and Time:" << dt << endl;
-    string name;
-    string response;
+{
+    //Displays Welcome message
+    std::cout << "WELCOME TO STAT QUIZ 2022\n";
 
-    questions question1;
-    questions question2;
-    questions question3;
-    questions question4;
-    questions question5;
-    questions question6;
-    questions question7;
-    questions question8;
-    questions question9;
-    questions question10;
-    questions question11;
-    questions question12;
-    questions question13;
-    questions question14;
-    questions question15;
-    questions question16;
-    questions question17;
-    questions question18;
+    std::cout << "Press enter to start...\n";
+    std::cin.get();
 
+    //Get the student number.
+    int  studentnumber;
+    std::cout << "Enter your Student Number\n";
+    std::cin >> studentnumber;
+    std::cout << "\n";
+
+    //Information on how to complete the quiz
+    std::cout <<"The quiz consists of 25 mcq questions.Write ONLY the option of your answer e.g(a,b,c or d)"<<"\n";
+
+    //Ask if user wants to start quiz.
+    std::string respond;
+    std::cout << "Are you ready to start the quiz, " << studentnumber << "? Yes/No.\n";
+    std::cin >> respond;
+
+    //If user says yes, the quiz begins.
+    if (respond == "Yes" || respond == "yes") {
+        std::cout << "\n";
+        std::cout << "Good luck!\n";
+        std::cout << "\n";
+        std::cout << "Press enter to continue.";
+        std::cin.get();
+        std::cin.ignore();
+    }else{
+        std::cout << "\n";
+        std::cout << "Goodbye!\n";
+        std::cin.ignore();
+        std::cin.get();
+        return 0;
+    }
+
+    //Instances of the questions.
+    Question question1;
+    Question question2;
+    Question question3;
+    Question question4;
+    Question question5;
+    Question question6;
+    Question question7;
+    Question question8;
+    Question question9;
+    Question question10;
+    Question question11;
+    Question question12;
+    Question question13;
+    Question question14;
+    Question question15;
+    Question question16;
+    Question question17;
+    Question question18;
+  
+    //Calling the member function setValues.
+    //Question is set, 5 answer choices, the correct char answer, 6 marks per question.
+   
      question1.setValues("The Department of Education was concerned about the schooling in some schools in a particular area.Two hundred(200)students from these schools were randomly choosen to write a standardized test.Theory average tesst mark of 51% was much lower than the national average of 65%",
                         "200-population 51-statistic 65-parameter",
                         "200-statistics  51-parameter  65-population",
@@ -180,29 +166,10 @@ int main()
 
     question18.setValues("Research has shown that 72% of people with internet access use youtube atleast twice a week.If a random sample of 100 people with internet access is selected,what is the probability that the sample proportion of the people that use youtube atleast twice a week differs from the actual proportion by no more than 0.02?",
                          "0.45","0.6779","0.9","0.99","0.3472",5,6);
+        
+      
 
-
-
-    cout<<endl;
-    cout<<"Press Enter to start the Stat130 Quizz "<<endl;
-    cin.get();
-
-    cout<<"What is your name : "<<endl;
-    cin>>name;
-    cout<<endl;
-
-    cout<<"Are you ready to take the quiz? : "<<endl;
-    cin>>response;
-    cout<<endl;
-
-    if(response != "Yes")
-    {
-        cout<<"Okay,bye"<<"\n"<<endl;
-    }
-    else
-    {
-        cout<<"You may proceed, GOODLUCK!!"<<"\n"
-        <<endl;
+    //Calling askQuestion member function.
     question1.askQuestion();
     question2.askQuestion();
     question3.askQuestion();
@@ -210,7 +177,7 @@ int main()
     question5.askQuestion();
     question6.askQuestion();
     question7.askQuestion();
-    question8.askQuestion();                  //use vectors??
+    question8.askQuestion();                            //use vectors??
     question9.askQuestion();
     question10.askQuestion();
     question11.askQuestion();
@@ -222,17 +189,94 @@ int main()
     question17.askQuestion();
     question18.askQuestion();
 
-    if(totalScore<60){
-        cout<<endl;
-        cout<<"Your total score is: "<<totalScore<<" out of 120"<<endl;
-        cout<<"You failed!,better luck next time"<<endl;
-        cout<<endl;
-     }else
-     {
-         cout<<endl;
-         cout<<"Your total score is: "<<totalScore<<" out of 120"<<endl;
-         cout<<endl;
-     }
-   }
-   return 0;
+
+    //Final score displayed when user finishes quiz.
+    cout << "Your Total Score is " << totalScore << " out of 100!\n";
+    cout << "\n";
+
+    //If the user scores 60 or above  60, user passes the quiz.
+    //Display message created with ASCII art generator.
+    //Link: http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
+    if (totalScore >= 60) {
+        std::cout << R"(
+   _____                            _         _       _   _
+  / ____|                          | |       | |     | | (_)
+ | |     ___  _ __   __ _ _ __ __ _| |_ _   _| | __ _| |_ _  ___  _ __  ___
+ | |    / _ \| '_ \ / _` | '__/ _` | __| | | | |/ _` | __| |/ _ \| '_ \/ __|
+ | |___| (_) | | | | (_| | | | (_| | |_| |_| | | (_| | |_| | (_) | | | \__ \
+  \_____\___/|_| |_|\__, |_|  \__,_|\__|\__,_|_|\__,_|\__|_|\___/|_| |_|___/
+                     __/ |
+ __     __          |___/___                       _   _   _   _
+ \ \   / /            |  __ \                     | | | | | | | |
+  \ \_/ /__  _   _    | |__) |_ _ ___ ___  ___  __| | | | | | | |
+   \   / _ \| | | |   |  ___/ _` / __/ __|/ _ \/ _` | | | | | | |
+    | | (_) | |_| |   | |  | (_| \__ \__ \  __/ _| | |_| |_| |_|
+    |_|\___/ \__,_|   |_|   \__,_|___/___/\___|\__,_| (_) (_) (_)
+
+
+    )" << "\n";
+        std::cout << "\n";
+        std::cin.get();
+        std::cin.ignore();
+        return 0;
+    }
+    else
+    {
+        std::cout << "You failed... Sorry, better luck next time.\n";
+        std::cout << "\n";
+    }
+    std::cin.get();
+    std::cin.ignore();
+    return 0;
+}
+
+//Function to set values for the answers
+void Question::setValues(string Q,string ans1,string ans2,string ans3,string ans4,string ans5,int ca,int QS)
+{
+    questionText=Q;
+    Answer_1=ans1;
+    Answer_2=ans2;
+    Answer_3=ans3;
+    Answer_4=ans4;
+    Answer_5=ans5;
+    correctSolution=ca;
+    questionScore=QS;
+
+}
+//Format for possible answers displayed when program executes.
+void Question::askQuestion()
+{
+    std::cout << "\n";
+    std::cout << Question_Text << "\n";
+    std::cout << "a. " << answer_1 << "\n";
+    std::cout << "b. " << answer_2 << "\n";
+    std::cout << "c. " << answer_3 << "\n";
+    std::cout << "d. " << answer_4 << "\n";
+    std::cout << "\n";
+
+    //User enters their answer.
+    std::cout << "What is your answer?" << "\n";
+    std::cin >> guess;
+    //If their answer is correct, message is displayed and 4 points are added to their score.
+    if (guess == correct_answer) {
+        std::cout << "\n";
+        std::cout << "Correct!!!" << "\n";
+        total = total + Question_Score;
+        std::cout << "\n";
+        std::cout << "Press enter to continue." << "\n";
+        std::cin.get();
+        std::cin.ignore();
+    }
+    else //If their answer is incorrect, message is displayed, no points added.
+         //Correct answer displayed.
+    {
+        std::cout << "\n";
+        std::cout <<"WRONG!!!"<<"\n";
+        std::cout <<"\n";
+        std::cout << "The correct answer is " << correct_answer << "." << "\n";
+        std::cout << "\n";
+        std::cout << "Press enter to continue." << "\n";
+        std::cin.get();
+        std::cin.ignore();
+    }
 }
