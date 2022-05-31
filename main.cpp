@@ -1,91 +1,117 @@
 #include <iostream>
 #include <string>
+#include <stdlib.h>
+#include <windows.h>
+#include <iomanip>
+#include <iostream>
+#include <unistd.h>
 
 using namespace std;
 
 int answer;
 int totalScore;
-int nextLevel;
+int nextLevel=1;
+int questionNum = 1;
 
-//5 possible answers, correct answer and question score.
-class Question{
-public:
-    void setValues(string,string,string,string,string,string,int int);
-    void askQuestion();
-
-private:
+class questions
+{
     string questionText;
-    string answer_1;
-    string answer_2;
-    string answer_3;
-    string answer_4;
-    string answer_5;
+    string Answer_1;
+    string Answer_2;
+    string Answer_3;
+    string Answer_4;
+    string Answer_5;
 
     int correctSolution;
     int questionScore;
+
+public:
+    void setValues(string,string,string,string,string,string,int,int);
+    void askQuestion();
+
 };
+
+void questions::setValues(string Q,string ans1,string ans2,string ans3,string ans4,string ans5,int ca,int QS)
+{
+    //create a class called Question to contain the info below.
+    //create a data structure that contains Question objects
+    questionText=Q;
+    Answer_1=ans1;
+    Answer_2=ans2;
+    Answer_3=ans3;
+    Answer_4=ans4;
+    Answer_5=ans5;
+    correctSolution=ca;
+    questionScore=QS;
+
+}
+void questions::askQuestion()
+{
+
+    cout<<"  Question : "<<questionNum<<endl;
+    questionNum = questionNum + 1;
+    cout<<questionText<<"\n"<<endl;
+    cout<<endl;
+    cout<<"1.  "<<Answer_1<<endl;
+    cout<<"2.  "<<Answer_2<<endl;
+    cout<<"3.  "<<Answer_3<<endl;
+    cout<<"4.  "<<Answer_4<<endl;
+    cout<<"5.  "<<Answer_5<<endl;
+    cout<<endl;
+
+
+    cout<<"Choose the correct answer: "<<endl;
+    cin>>answer;
+    if(answer==correctSolution)
+    {
+        totalScore= totalScore+questionScore;
+        //nextLevel=totalScore; //we don't understand the logic here, can you explain???
+        //nextLevel = nextLevel + 1; incremeny by 1 to go to the next level should be the way to move to the next level, dont you think????
+        cout<<"Great,you are correct!"<<endl;
+        cout<<"Score: "<< questionScore<<" out of "<<questionScore<<endl;
+        cout<<endl;
+    }else
+    {
+        cout<<"Score: 0"<<" out of "<<questionScore<<endl;
+        cout<<"The correct solution is "<<correctSolution<<endl;
+    }
+}
 
 int main()
 {
-    //Displays Welcome message
-    std::cout << "WELCOME TO STAT QUIZ 2022\n";
+     cout << R"(
 
-    std::cout << "Press enter to start...\n";
-    std::cin.get();
+ _      _____ _     ____  ____  _      _____   _____  ____    ____  _     _  ____    _____ ____  _      _____
+/ \  /|/  __// \   /   _\/  _ \/ \__/|/  __/  /__ __\/  _ \  /  _ \/ \ /\/ \/_   \  /  __//  _ \/ \__/|/  __/
+| |  |||  \  | |   |  /  | / \|| |\/|||  \      / \  | / \|  | / \|| | ||| | /   /  | |  _| / \|| |\/|||  \
+| |/\|||  /_ | |_/\|  \_ | \_/|| |  |||  /_     | |  | \_/|  | \_\|| \_/|| |/   /_  | |_//| |-||| |  |||  /_
+\_/  \|\____\\____/\____/\____/\_/  \|\____\    \_/  \____/  \____\\____/\_/\____/  \____\\_/ \|\_/  \|\____\
 
-    //Get the student number.
-    int  studentnumber;
-    std::cout << "Enter your Student Number\n";
-    std::cin >> studentnumber;
-    std::cout << "\n";
+----------------------------------------------By: Group 6 ---------------------------------------------
+ )" << "\n";
 
-    //Information on how to complete the quiz
-    std::cout <<"The quiz consists of 25 mcq questions.Write ONLY the option of your answer e.g(a,b,c or d)"<<"\n";
+    string name;
+    string response;
 
-    //Ask if user wants to start quiz.
-    std::string respond;
-    std::cout << "Are you ready to start the quiz, " << studentnumber << "? Yes/No.\n";
-    std::cin >> respond;
+    questions question1;
+    questions question2;
+    questions question3;
+    questions question4;
+    questions question5;
+    questions question6;
+    questions question7;
+    questions question8;
+    questions question9;
+    questions question10;
+    questions question11;
+    questions question12;
+    questions question13;
+    questions question14;
+    questions question15;
+    questions question16;
+    questions question17;
+    questions question18;
 
-    //If user says yes, the quiz begins.
-    if (respond == "Yes" || respond == "yes") {
-        std::cout << "\n";
-        std::cout << "Good luck!\n";
-        std::cout << "\n";
-        std::cout << "Press enter to continue.";
-        std::cin.get();
-        std::cin.ignore();
-    }else{
-        std::cout << "\n";
-        std::cout << "Goodbye!\n";
-        std::cin.ignore();
-        std::cin.get();
-        return 0;
-    }
-
-    //Instances of the questions.
-    Question question1;
-    Question question2;
-    Question question3;
-    Question question4;
-    Question question5;
-    Question question6;
-    Question question7;
-    Question question8;
-    Question question9;
-    Question question10;
-    Question question11;
-    Question question12;
-    Question question13;
-    Question question14;
-    Question question15;
-    Question question16;
-    Question question17;
-    Question question18;
-  
-    //Calling the member function setValues.
-    //Question is set, 5 answer choices, the correct char answer, 6 marks per question.
-   
      question1.setValues("The Department of Education was concerned about the schooling in some schools in a particular area.Two hundred(200)students from these schools were randomly choosen to write a standardized test.Theory average tesst mark of 51% was much lower than the national average of 65%",
                         "200-population 51-statistic 65-parameter",
                         "200-statistics  51-parameter  65-population",
@@ -125,7 +151,6 @@ int main()
                         "The variability of the two sets of data cannot be compared because they are measured in different units.",
                         "The exercise data is more variable than the test data because it's coefficient of variation is greater than that of test data.",
                         5,6);
-
    question7.setValues("The daily temperatures in Durban for the summer months were recorded.It was found that the data was bell-shaped with a mean of 28degrees celsius and a standard deviation of 3 degrees celsius.Approximately what percentage of the temperatures is cooler than 25 degrees celsius or warmer than 31 degrees celsius?",
                        "32%","5%","68%","47.5%","none of the above",3,6);
 
@@ -166,117 +191,174 @@ int main()
 
     question18.setValues("Research has shown that 72% of people with internet access use youtube atleast twice a week.If a random sample of 100 people with internet access is selected,what is the probability that the sample proportion of the people that use youtube atleast twice a week differs from the actual proportion by no more than 0.02?",
                          "0.45","0.6779","0.9","0.99","0.3472",5,6);
-        
-      
-
-    //Calling askQuestion member function.
-    question1.askQuestion();
-    question2.askQuestion();
-    question3.askQuestion();
-    question4.askQuestion();
-    question5.askQuestion();
-    question6.askQuestion();
-    question7.askQuestion();
-    question8.askQuestion();                            //use vectors??
-    question9.askQuestion();
-    question10.askQuestion();
-    question11.askQuestion();
-    question12.askQuestion();
-    question13.askQuestion();
-    question14.askQuestion();
-    question15.askQuestion();
-    question16.askQuestion();
-    question17.askQuestion();
-    question18.askQuestion();
 
 
-    //Final score displayed when user finishes quiz.
-    cout << "Your Total Score is " << totalScore << " out of 100!\n";
-    cout << "\n";
 
-    //If the user scores 60 or above  60, user passes the quiz.
-    //Display message created with ASCII art generator.
-    //Link: http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
-    if (totalScore >= 60) {
-        std::cout << R"(
-   _____                            _         _       _   _
-  / ____|                          | |       | |     | | (_)
- | |     ___  _ __   __ _ _ __ __ _| |_ _   _| | __ _| |_ _  ___  _ __  ___
- | |    / _ \| '_ \ / _` | '__/ _` | __| | | | |/ _` | __| |/ _ \| '_ \/ __|
- | |___| (_) | | | | (_| | | | (_| | |_| |_| | | (_| | |_| | (_) | | | \__ \
-  \_____\___/|_| |_|\__, |_|  \__,_|\__|\__,_|_|\__,_|\__|_|\___/|_| |_|___/
-                     __/ |
- __     __          |___/___                       _   _   _   _
- \ \   / /            |  __ \                     | | | | | | | |
-  \ \_/ /__  _   _    | |__) |_ _ ___ ___  ___  __| | | | | | | |
-   \   / _ \| | | |   |  ___/ _` / __/ __|/ _ \/ _` | | | | | | |
-    | | (_) | |_| |   | |  | (_| \__ \__ \  __/ _| | |_| |_| |_|
-    |_|\___/ \__,_|   |_|   \__,_|___/___/\___|\__,_| (_) (_) (_)
+    cout<<endl;
+    cout<<"Press Enter to start the Stat130 Quiz "<<endl;
+    cin.get();
 
+    cout<<"What is your name : "<<endl;
+    cin>>name;
+    cout<<endl;
 
-    )" << "\n";
-        std::cout << "\n";
-        std::cin.get();
-        std::cin.ignore();
-        return 0;
+    cout<<"Are you ready to take the quiz,"<< name << "? Yes/No."<<endl;
+    cin>>response;
+    cout<<endl;
+    system("CLS");
+
+    if(response != "Yes")
+    {
+        cout<<"Okay,bye"<<"\n"<<endl;
     }
     else
     {
-        std::cout << "You failed... Sorry, better luck next time.\n";
-        std::cout << "\n";
+        cout<<"You may proceed, GOODLUCK!!"<<"\n"
+        <<endl;
     }
-    std::cin.get();
-    std::cin.ignore();
-    return 0;
-}
+     cout<<"You're on Level 1"<<endl;
+    //level 1
+    Beep(700,300);
+    question1.askQuestion();
+    Beep(700,300);
+    question2.askQuestion();
+    Beep(700,300);
+    question3.askQuestion();
+    Beep(700,300);
+    question4.askQuestion();
+    Beep(700,300);
+    question5.askQuestion();
+    Beep(700,300);
+    question6.askQuestion();
+    Beep(700,300);
+    if(totalScore >= 14){
+        nextLevel = nextLevel + 1;
+        cout << R"(
 
-//Function to set values for the answers
-void Question::setValues(string Q,string ans1,string ans2,string ans3,string ans4,string ans5,int ca,int QS)
-{
-    questionText=Q;
-    Answer_1=ans1;
-    Answer_2=ans2;
-    Answer_3=ans3;
-    Answer_4=ans4;
-    Answer_5=ans5;
-    correctSolution=ca;
-    questionScore=QS;
+__  __               ____                           ____
+\ \/ /___  __  __   / __ \____ ______________  ____/ / /
+ \  / __ \/ / / /  / /_/ / __ `/ ___/ ___/ _ \/ __  / /
+ / / /_/ / /_/ /  / ____/ /_/ (__  |__  )  __/ /_/ /_/
+/_/\____/\__,_/  /_/    \__,_/____/____/\___/\__,_(_)
 
-}
-//Format for possible answers displayed when program executes.
-void Question::askQuestion()
-{
-    std::cout << "\n";
-    std::cout << Question_Text << "\n";
-    std::cout << "a. " << answer_1 << "\n";
-    std::cout << "b. " << answer_2 << "\n";
-    std::cout << "c. " << answer_3 << "\n";
-    std::cout << "d. " << answer_4 << "\n";
-    std::cout << "\n";
+    )" << "\n";
+        cout<<"Congratulations!!! you have made it to level "<<nextLevel<<endl;
+        cout<<"Your total score is: "<<totalScore<<endl;
+        cout<<"I am now sleeping ....."<<endl;
+        Sleep(10000);
+        cout<<"I am now awake, yeppie!!!"<<endl;
+        //level2
+        system("CLS");
+        cout<<"You're on Level 2"<<endl;
+        Beep(700,300);
+        question7.askQuestion();
+        Beep(700,300);
+        question8.askQuestion(); //use vectors??
+        Beep(700,300);
+        question9.askQuestion();
+        Beep(700,300);
+        question10.askQuestion();
+        Beep(700,300);
+        question11.askQuestion();
+        Beep(700,300);
+        question12.askQuestion();
+        Beep(700,300);
+        if(totalScore >= 32){
+            nextLevel = nextLevel + 1;
+            cout << R"(
 
-    //User enters their answer.
-    std::cout << "What is your answer?" << "\n";
-    std::cin >> guess;
-    //If their answer is correct, message is displayed and 4 points are added to their score.
-    if (guess == correct_answer) {
-        std::cout << "\n";
-        std::cout << "Correct!!!" << "\n";
-        total = total + Question_Score;
-        std::cout << "\n";
-        std::cout << "Press enter to continue." << "\n";
-        std::cin.get();
-        std::cin.ignore();
+__  __               ____                           ____
+\ \/ /___  __  __   / __ \____ ______________  ____/ / /
+ \  / __ \/ / / /  / /_/ / __ `/ ___/ ___/ _ \/ __  / /
+ / / /_/ / /_/ /  / ____/ /_/ (__  |__  )  __/ /_/ /_/
+/_/\____/\__,_/  /_/    \__,_/____/____/\___/\__,_(_)
+
+    )" << "\n";
+            cout<<"Congratulations!!! you have made it to level "<<nextLevel<<endl;
+            cout<<"Your total score is: "<<totalScore<<endl;
+            cout<<"I am now sleeping ....."<<endl;
+            Sleep(10000);
+            cout<<"I am now awake, yeppie!!!"<<endl;
+
+            system("CLS");
+             cout<<"You're on Level 3";
+            //level3
+            Beep(700,300);
+            question13.askQuestion();
+            Beep(700,300);
+            question14.askQuestion();
+            Beep(700,300);
+            question15.askQuestion();
+            Beep(700,300);
+            question16.askQuestion();
+            Beep(700,300);
+            question17.askQuestion();
+            Beep(700,300);
+            question18.askQuestion();
+            Beep(700,300);
+            if(totalScore >= 82){
+              nextLevel = nextLevel + 1;
+              cout << R"(
+
+__  __               ____                           ____
+\ \/ /___  __  __   / __ \____ ______________  ____/ / /
+ \  / __ \/ / / /  / /_/ / __ `/ ___/ ___/ _ \/ __  / /
+ / / /_/ / /_/ /  / ____/ /_/ (__  |__  )  __/ /_/ /_/
+/_/\____/\__,_/  /_/    \__,_/____/____/\___/\__,_(_)
+
+    )" << "\n";
+              cout<<"Congratulations!!! you have completed the quiz:"<<endl;
+              cout<<"Your total score is: "<<totalScore<<endl;
+            }
+            else{
+                cout<<endl;
+                cout<< R"(
+                                                                 ,---.,---.
+,--.   ,--.                 ,------.       ,--.,--.          ,--.|   ||   |
+ \  `.'  /,---. ,--.,--.    |  .---',--,--.`--'|  | ,---.  ,-|  ||  .'|  .'
+  '.    /| .-. ||  ||  |    |  `--,' ,-.  |,--.|  || .-. :' .-. ||  | |  |
+    |  | ' '-' ''  ''  '    |  |`  \ '-'  ||  ||  |\   --.\ `-' |`--' `--'
+    `--'  `---'  `----'     `--'    `--`--'`--'`--' `----' `---' .--. .--.
+                                                                 '--' '--'
+            )"<<"\n"<<endl;
+                cout<<"Your total score is: "<<totalScore<<" out of 100"<<endl;
+                cout<<"You failed, you can't finish the quiz,better luck next time"<<endl;
+                cout<<endl;
+            }
+        }
+        else{
+         cout<<endl;
+         cout<< R"(
+                                                                 ,---.,---.
+,--.   ,--.                 ,------.       ,--.,--.          ,--.|   ||   |
+ \  `.'  /,---. ,--.,--.    |  .---',--,--.`--'|  | ,---.  ,-|  ||  .'|  .'
+  '.    /| .-. ||  ||  |    |  `--,' ,-.  |,--.|  || .-. :' .-. ||  | |  |
+    |  | ' '-' ''  ''  '    |  |`  \ '-'  ||  ||  |\   --.\ `-' |`--' `--'
+    `--'  `---'  `----'     `--'    `--`--'`--'`--' `----' `---' .--. .--.
+                                                                 '--' '--'
+            )"<<"\n"<<endl;
+          cout<<"Your total score is: "<<totalScore<<" out of 64"<<endl;
+          cout<<"You failed, you can't proceed to Level 3!,better luck next time"<<endl;
+          cout<<endl;
+        }
     }
-    else //If their answer is incorrect, message is displayed, no points added.
-         //Correct answer displayed.
-    {
-        std::cout << "\n";
-        std::cout <<"WRONG!!!"<<"\n";
-        std::cout <<"\n";
-        std::cout << "The correct answer is " << correct_answer << "." << "\n";
-        std::cout << "\n";
-        std::cout << "Press enter to continue." << "\n";
-        std::cin.get();
-        std::cin.ignore();
+
+    else{
+        cout<<endl;
+         cout<< R"(
+                                                                 ,---.,---.
+,--.   ,--.                 ,------.       ,--.,--.          ,--.|   ||   |
+ \  `.'  /,---. ,--.,--.    |  .---',--,--.`--'|  | ,---.  ,-|  ||  .'|  .'
+  '.    /| .-. ||  ||  |    |  `--,' ,-.  |,--.|  || .-. :' .-. ||  | |  |
+    |  | ' '-' ''  ''  '    |  |`  \ '-'  ||  ||  |\   --.\ `-' |`--' `--'
+    `--'  `---'  `----'     `--'    `--`--'`--'`--' `----' `---' .--. .--.
+                                                                 '--' '--'
+            )"<<"\n"<<endl;
+        cout<<"Your total score is: "<<totalScore<<" out of 28"<<endl;
+        cout<<"You failed, you can't proceed to Level 2!,better luck next time"<<endl;
+        cout<<endl;
     }
+
+   return 0;
+
 }
