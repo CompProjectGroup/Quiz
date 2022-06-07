@@ -78,7 +78,11 @@ void questions::askQuestion()
 }
 
 int main()
-{
+{    // set the text color
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED |
+                                                                 FOREGROUND_GREEN |
+                                                                 FOREGROUND_INTENSITY );
+    
      cout << R"(
 
  _      _____ _     ____  ____  _      _____   _____  ____    ____  _     _  ____    _____ ____  _      _____
@@ -218,6 +222,7 @@ int main()
     }
      cout<<"You're on Level 1"<<endl;
     //level 1
+    system("color Cf");
     Beep(700,300);
     question1.askQuestion();
     Beep(700,300);
@@ -248,6 +253,7 @@ __  __               ____                           ____
         Sleep(10000);
         cout<<"I am now awake, yeppie!!!"<<endl;
         //level2
+        system("color 2f");
         system("CLS");
         cout<<"You're on Level 2"<<endl;
         Beep(700,300);
@@ -283,6 +289,7 @@ __  __               ____                           ____
             system("CLS");
              cout<<"You're on Level 3";
             //level3
+            system("color 3f");
             Beep(700,300);
             question13.askQuestion();
             Beep(700,300);
