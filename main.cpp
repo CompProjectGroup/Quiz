@@ -10,6 +10,7 @@ using namespace std;
 
 int answer;
 int totalScore;
+int score[3];
 
 //POINTERS
 int a=1;
@@ -233,8 +234,9 @@ int main()
     {
         cout<<"You may proceed, GOODLUCK!!"<<"\n"
         <<endl;
-    }
+    
      cout<<"You're on Level 1"<<endl;
+        
     //level 1
     system("color Cf");
     Beep(700,300);
@@ -251,6 +253,7 @@ int main()
     question6.askQuestion();
     Beep(700,300);
     if(totalScore >= 14){
+        score[0]=totalScore;
         *nextLevel = *nextLevel + 1;
         cout << R"(
 
@@ -262,10 +265,11 @@ __  __               ____                           ____
 
     )" << "\n";
         cout<<"Congratulations!!! you have made it to level "<<*nextLevel<<endl;
-        cout<<"Your total score is: "<<totalScore<<endl;
+        cout<<"Your score for level 1 is: "<<score[0]<<endl;
         cout<<"I am now sleeping ....."<<endl;
         Sleep(10000);
         cout<<"I am now awake, yeppie!!!"<<endl;
+        
         //level2
         system("color 2f");
         system("CLS");
@@ -283,7 +287,8 @@ __  __               ____                           ____
         Beep(700,300);
         question12.askQuestion();
         Beep(700,300);
-        if(totalScore >= 32){
+        if(totalScore-28 >= 18){
+            score[1]=totalScore-28;
             *nextLevel = *nextLevel + 1;
             cout << R"(
 
@@ -295,13 +300,14 @@ __  __               ____                           ____
 
     )" << "\n";
             cout<<"Congratulations!!! you have made it to level "<<*nextLevel<<endl;
-            cout<<"Your total score is: "<<totalScore<<endl;
+            cout<<"Your  score for level 2 is: "<<score[1]<<endl;
             cout<<"I am now sleeping ....."<<endl;
             Sleep(10000);
             cout<<"I am now awake, yeppie!!!"<<endl;
 
             system("CLS");
              cout<<"You're on Level 3";
+           
             //level3
             system("color 3f");
             Beep(700,300);
@@ -317,7 +323,9 @@ __  __               ____                           ____
             Beep(700,300);
             question18.askQuestion();
             Beep(700,300);
-            if(totalScore >= 82){
+            
+            if(totalScore-64 >= 18){
+               score[2]=totalScore-64;
               *nextLevel = *nextLevel + 1;
               cout << R"(
 
@@ -329,11 +337,26 @@ __  __               ____                           ____
 
     )" << "\n";
               cout<<"Congratulations!!! you have completed the quiz:"<<endl;
-              cout<<"Your total score is: "<<totalScore<<endl;
+              cout<<"Your score for level 3 is: "<<score[2]<<" ot of 36"<<endl;
             }
             else{
-                cout<<endl;
-                cout<< R"(
+                if(totalScore>=50)
+                {
+                     cout << R"(
+
+__  __               ____                           ____
+\ \/ /___  __  __   / __ \____ ______________  ____/ / /
+ \  / __ \/ / / /  / /_/ / __ `/ ___/ ___/ _ \/ __  / /
+ / / /_/ / /_/ /  / ____/ /_/ (__  |__  )  __/ /_/ /_/
+/_/\____/\__,_/  /_/    \__,_/____/____/\___/\__,_(_)
+
+    )" << "\n";
+                    cout<<"---------------You failed level 3 but you passed the quiz-------------------"<<endl;
+                    cout<<"Your total score is : "<<total score<<"  out of 100"<<endl;
+                }
+                else{
+                cout<<"\n"<<endl;
+                 cout<< R"(
                                                                  ,---.,---.
 ,--.   ,--.                 ,------.       ,--.,--.          ,--.|   ||   |
  \  `.'  /,---. ,--.,--.    |  .---',--,--.`--'|  | ,---.  ,-|  ||  .'|  .'
@@ -342,9 +365,12 @@ __  __               ____                           ____
     `--'  `---'  `----'     `--'    `--`--'`--'`--' `----' `---' .--. .--.
                                                                  '--' '--'
             )"<<"\n"<<endl;
+            
                 cout<<"Your total score is: "<<totalScore<<" out of 100"<<endl;
-                cout<<"You failed, you can't finish the quiz,better luck next time"<<endl;
-                cout<<endl;
+                cout<<"You failed the quiz,better luck next time"<<endl;
+                cout<<endl; 
+                }
+               
             }
         }
         else{
@@ -358,7 +384,8 @@ __  __               ____                           ____
     `--'  `---'  `----'     `--'    `--`--'`--'`--' `----' `---' .--. .--.
                                                                  '--' '--'
             )"<<"\n"<<endl;
-          cout<<"Your total score is: "<<totalScore<<" out of 64"<<endl;
+          cout<<"Level 2 score is: "<<score[1]<<" out of 36"<<endl;
+          cout<<"Your total score is: "<<totalScore<<" out of 100"<<endl;
           cout<<"You failed, you can't proceed to Level 3!,better luck next time"<<endl;
           cout<<endl;
         }
@@ -375,11 +402,12 @@ __  __               ____                           ____
     `--'  `---'  `----'     `--'    `--`--'`--'`--' `----' `---' .--. .--.
                                                                  '--' '--'
             )"<<"\n"<<endl;
-        cout<<"Your total score is: "<<totalScore<<" out of 28"<<endl;
+        cout<<"Level 1 score is: "<< score[0]<<" out of 28"<<endl;
+        cout<<"Your total score is: "<<totalScore<<" out of 100"<<endl;
         cout<<"You failed, you can't proceed to Level 2!,better luck next time"<<endl;
         cout<<endl;
     }
-
    return 0;
 
+}
 }
