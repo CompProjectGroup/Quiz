@@ -337,7 +337,7 @@ __  __               ____                           ____
 
     )" << "\n";
               cout<<"Congratulations!!! you have completed the quiz:"<<endl;
-              cout<<"Your score for level 3 is: "<<score[2]<<" ot of 36"<<endl;
+              cout<<"Your score for level 3 is: "<<score[2]<<" out of 36"<<endl;
             }
             else{
                 if(totalScore>=50)
