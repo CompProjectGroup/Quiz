@@ -51,7 +51,7 @@ void questions::setValues(string Q,string ans1,string ans2,string ans3,string an
 }
 void questions::askQuestion()
 {
-   /*this method displayes which question is being asked i.e question 1,2 and so on.It then diaplys the question and the solution options that you have to choose from.*/
+   /*this method displayes which question is being asked i.e question 1,2 and so on.It then displays the question and the solution options that you have to choose from.*/
     
     cout<<" \nQuestion : "<<*questionNum<<endl;
     *questionNum = *questionNum + 1;
@@ -207,7 +207,7 @@ int main()
     cout<<"Press Enter to start the Stat130 Quiz "<<endl;
     cin.get();
    
-    Person person; 
+    Person person;                                            //creating variable person of type Person
     cout<<"Enter Full name : "<<endl;
     cin.get(person.name,30);
     cout<<"Enter age: ";
