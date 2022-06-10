@@ -10,9 +10,12 @@ using namespace std;
 
 int answer;
 int totalScore;
-int nextLevel=1;
-int questionNum = 1;
 
+//POINTERS
+int a=1;
+int b =1;
+int *nextLevel = &a;  // a pointer to variable a- stores the address of a
+int *questionNum = &b;  // a pointer to variable b-stores address of b
 class questions
 {
     string questionText;
@@ -48,10 +51,9 @@ void questions::setValues(string Q,string ans1,string ans2,string ans3,string an
 void questions::askQuestion()
 {
 
-    cout<<"  Question : "<<questionNum<<endl;
-    questionNum = questionNum + 1;
-    cout<<questionText<<"\n"<<endl;
-    cout<<endl;
+    cout<<" \nQuestion : "<<*questionNum<<endl;
+    *questionNum = *questionNum + 1;
+    cout<<"\n"<<questionText<<endl;
     cout<<"1.  "<<Answer_1<<endl;
     cout<<"2.  "<<Answer_2<<endl;
     cout<<"3.  "<<Answer_3<<endl;
@@ -249,7 +251,7 @@ int main()
     question6.askQuestion();
     Beep(700,300);
     if(totalScore >= 14){
-        nextLevel = nextLevel + 1;
+        *nextLevel = *nextLevel + 1;
         cout << R"(
 
 __  __               ____                           ____
@@ -259,7 +261,7 @@ __  __               ____                           ____
 /_/\____/\__,_/  /_/    \__,_/____/____/\___/\__,_(_)
 
     )" << "\n";
-        cout<<"Congratulations!!! you have made it to level "<<nextLevel<<endl;
+        cout<<"Congratulations!!! you have made it to level "<<*nextLevel<<endl;
         cout<<"Your total score is: "<<totalScore<<endl;
         cout<<"I am now sleeping ....."<<endl;
         Sleep(10000);
@@ -271,7 +273,7 @@ __  __               ____                           ____
         Beep(700,300);
         question7.askQuestion();
         Beep(700,300);
-        question8.askQuestion(); //use vectors??
+        question8.askQuestion(); 
         Beep(700,300);
         question9.askQuestion();
         Beep(700,300);
@@ -282,7 +284,7 @@ __  __               ____                           ____
         question12.askQuestion();
         Beep(700,300);
         if(totalScore >= 32){
-            nextLevel = nextLevel + 1;
+            *nextLevel = *nextLevel + 1;
             cout << R"(
 
 __  __               ____                           ____
@@ -292,7 +294,7 @@ __  __               ____                           ____
 /_/\____/\__,_/  /_/    \__,_/____/____/\___/\__,_(_)
 
     )" << "\n";
-            cout<<"Congratulations!!! you have made it to level "<<nextLevel<<endl;
+            cout<<"Congratulations!!! you have made it to level "<<*nextLevel<<endl;
             cout<<"Your total score is: "<<totalScore<<endl;
             cout<<"I am now sleeping ....."<<endl;
             Sleep(10000);
@@ -316,7 +318,7 @@ __  __               ____                           ____
             question18.askQuestion();
             Beep(700,300);
             if(totalScore >= 82){
-              nextLevel = nextLevel + 1;
+              *nextLevel = *nextLevel + 1;
               cout << R"(
 
 __  __               ____                           ____
