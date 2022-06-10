@@ -14,8 +14,9 @@ int totalScore;
 //POINTERS
 int a=1;
 int b =1;
-int *nextLevel = &a;  // a pointer to variable a- stores the address of a
-int *questionNum = &b;  // a pointer to variable b-stores address of b
+int *nextLevel = &a;                                     // a pointer to variable a- stores the address of a
+int *questionNum = &b;                                  // a pointer to variable b-stores address of b
+
 class questions
 {
     string questionText;
@@ -50,7 +51,8 @@ void questions::setValues(string Q,string ans1,string ans2,string ans3,string an
 }
 void questions::askQuestion()
 {
-
+   /*this method displayes which question is being asked i.e question 1,2 and so on.It then diaplys the question and the solution options that you have to choose from.*/
+    
     cout<<" \nQuestion : "<<*questionNum<<endl;
     *questionNum = *questionNum + 1;
     cout<<"\n"<<questionText<<endl;
@@ -61,14 +63,11 @@ void questions::askQuestion()
     cout<<"5.  "<<Answer_5<<endl;
     cout<<endl;
 
-
     cout<<"Choose the correct answer: "<<endl;
     cin>>answer;
     if(answer==correctSolution)
     {
         totalScore= totalScore+questionScore;
-        //nextLevel=totalScore; //we don't understand the logic here, can you explain???
-        //nextLevel = nextLevel + 1; incremeny by 1 to go to the next level should be the way to move to the next level, dont you think????
         cout<<"Great,you are correct!"<<endl;
         cout<<"Score: "<< questionScore<<" out of "<<questionScore<<endl;
         cout<<endl;
@@ -80,9 +79,11 @@ void questions::askQuestion()
 }
 struct Person
 {
-    char name[30];
+    char name[30];       //declares Person as a new data type that can hold 3 fields of different data -name,age and response.
     int age;
+    string response
 };
+
 int main()
 {    // set the text color
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED |
@@ -100,7 +101,6 @@ int main()
 ----------------------------------------------By: Group 6 ---------------------------------------------
  )" << "\n";
 
-    string response;
 
     questions question1;
     questions question2;
@@ -221,11 +221,11 @@ int main()
     
 
     cout<<"Are you ready to take the quiz,"<< name << "? Yes/No."<<endl;
-    cin>>response;
+    cin>>person.response;
     cout<<endl;
     system("CLS");
 
-    if(response != "Yes")
+    if(person.response != "Yes")
     {
         cout<<"Okay,bye"<<"\n"<<endl;
     }
