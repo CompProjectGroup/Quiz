@@ -76,7 +76,11 @@ void questions::askQuestion()
         cout<<"The correct solution is "<<correctSolution<<endl;
     }
 }
-
+struct Person
+{
+    char name[30];
+    int age;
+};
 int main()
 {    // set the text color
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED |
@@ -94,7 +98,6 @@ int main()
 ----------------------------------------------By: Group 6 ---------------------------------------------
  )" << "\n";
 
-    string name;
     string response;
 
     questions question1;
@@ -201,10 +204,19 @@ int main()
     cout<<endl;
     cout<<"Press Enter to start the Stat130 Quiz "<<endl;
     cin.get();
-
-    cout<<"What is your name : "<<endl;
-    cin>>name;
+   
+    Person person; 
+    cout<<"Enter Full name : "<<endl;
+    cin.get(person.name,30);
+    cout<<"Enter age: ";
+    cin>>person.age;
     cout<<endl;
+
+    cout<<"\nInformation about the player"<<endl;
+    cout<<"Name: "<<person.name<<endl;
+    cout<<"Age:  "<<person.age<<endl;
+
+    
 
     cout<<"Are you ready to take the quiz,"<< name << "? Yes/No."<<endl;
     cin>>response;
