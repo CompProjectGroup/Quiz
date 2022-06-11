@@ -10,7 +10,7 @@ using namespace std;
 
 int answer;
 int totalScore;
-int score[3];
+int score[3];                    //an array that gonna store the total score of each level
 
 //POINTERS
 int a=1;
