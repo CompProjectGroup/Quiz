@@ -82,7 +82,7 @@ struct Person
 {
     char name[30];       //declares Person as a new data type that can hold 3 fields of different data -name,age and response.
     int age;
-    string response
+    string response;
 };
 
 int main()
@@ -221,7 +221,7 @@ int main()
 
     
 
-    cout<<"Are you ready to take the quiz,"<< name << "? Yes/No."<<endl;
+    cout<<"Are you ready to take the quiz,"<< person.name << "? Yes/No."<<endl;
     cin>>person.response;
     cout<<endl;
     system("CLS");
@@ -352,7 +352,7 @@ __  __               ____                           ____
 
     )" << "\n";
                     cout<<"---------------You failed level 3 but you passed the quiz-------------------"<<endl;
-                    cout<<"Your total score is : "<<total score<<"  out of 100"<<endl;
+                    cout<<"Your total score is : "<<totalScore<<"  out of 100"<<endl;
                 }
                 else{
                 cout<<"\n"<<endl;
